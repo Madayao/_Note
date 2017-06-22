@@ -1,0 +1,46 @@
+<meta charset="utf8">
+<ul class="test var">
+    <li>这是第一条alert(0);</li>
+    <li>这是第二条alert(1);</li>
+    <li>这是第三条alert(2);</li>
+</ul>
+<script type="text/javascript">
+    var elements = document.querySelector('.var').querySelectorAll('li');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].onclick = function () {
+            alert(i);
+        }
+    }
+</script>
+
+<!--// 萧大讲过, 这是在函数调用完毕后才执行的动作-->
+
+<ul class="test let">
+    <li>这是第一条alert(0);</li>
+    <li>这是第二条alert(1);</li>
+    <li>这是第三条alert(2);</li>
+</ul>
+<script type="text/javascript">
+    var elements = document.querySelector('.let').querySelectorAll('li');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].onclick = function () {
+            alert(i);
+        }
+    }
+</script>
+
+<ul class="test3 var">
+    <li>这是第一条alert(0);</li>
+    <li>这是第二条alert(1);</li>
+    <li>这是第三条alert(2);</li>
+</ul>
+<script type="text/javascript">
+    var elements = document.querySelector('.test3').querySelectorAll('li');
+    for (var i = 0; i < elements.length; i++) {
+        (function (i) {
+            elements[i].onclick = function () {
+                alert(i);
+            }
+        })(i)
+    }
+</script>

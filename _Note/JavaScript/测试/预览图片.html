@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ImagePreview</title>
+</head>
+<body>
+    <input type="file" id="imageUpload" multiple accept="image/*"  onchange="previewImages(this)">
+    <div id="imageList"></div>
+    <script>
+    window.URL = window.URL || window.webkitURL;
+    var imageUpload = document.getElementById("imageUpload"),
+        imageList = document.getElementById("imageList")
+    function previewImages(obj) {
+        var width = 200,
+            height = 200,
+            files = obj.files,
+            img = new Image(width, height)
+        console.log(this, obj, files, files[0])
+        if(window.URL){
+            img.src = window.URL.createObjectURL(files[0])
+            img.onload = function(e) {
+                window.URL.revokeObjectURL(this.src)
+            }
+            imageList.appendChild(img)
+        }
+    }
+    </script>
+</body>
+</html>
